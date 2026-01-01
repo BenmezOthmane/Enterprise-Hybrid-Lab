@@ -26,14 +26,15 @@ Upon reaching the operating system selection screen, the installer displayed an 
 ###  The Solution: Disk Reconfiguration
 To resolve this, I performed the following troubleshooting steps:
 1. **Hard Disk Removal:** Deleted the existing virtual hard disk from the VM settings.
-2. **New Disk Creation:** Added a new Hard Disk via the **Add Hardware Wizard**.
-3. **Controller Type:** Specifically selected **SATA** to ensure compatibility.
-4. **Capacity & Allocation:** Set a **40 GB** maximum disk size and chose to **split the virtual disk into multiple files** for better performance and portability.
+2. **Floppy Removal:** Removed the virtual Floppy drive and the associated autoinst.flp file from the VM settings.
+3. **New Disk Creation:** Added a new Hard Disk via the **Add Hardware Wizard**.
+4. **Controller Type:** Specifically selected **SATA** to ensure compatibility.
+5. **Capacity & Allocation:** Set a **40 GB** maximum disk size and chose to **split the virtual disk into multiple files** for better performance and portability.
 
 > **Troubleshooting Steps Captured:**
 > ![Adding New Disk](./Screenshots/Scr_add_hard_disk_1.png)
-> ![Selecting SATA](./Screenshots/Scr_add_hard_disk_1.png)
-> ![Final Disk Setup](./Screenshots/Scr_add_hard_disk_1.png)
+> ![Selecting SATA](./Screenshots/Scr_add_hard_disk_2.png)
+> ![Final Disk Setup](./Screenshots/Scr_add_hard_disk_4.png)
 
 ###  Result
 After reconfiguring the disk hardware, the installer successfully identified the drive, allowing the installation to proceed.
