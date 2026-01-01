@@ -40,6 +40,12 @@ To resolve this, I performed the following troubleshooting steps:
 
 ###  Result
 After reconfiguring the disk hardware, the installer successfully identified the drive, allowing the installation to proceed.
+Finally the problem was fixed
+> ![The result](./Screenshots/Scr_Probem_Fixed.png)
+
+###  The installation was completed successfully
+The installation was completed
+> ![Windows Server 2022 Desktop](./Screenshots/Scr_Windows_Server_Desktop.png)
 
 ---
 
