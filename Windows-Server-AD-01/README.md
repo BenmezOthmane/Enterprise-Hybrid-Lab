@@ -56,7 +56,7 @@ The installation was completed
 - **Static IP:** `10.0.0.10`
 - **Subnet Mask:** `255.0.0.0`
 - **Default Gateway:** `10.0.0.1`
-- **Preferred DNS:** `10.0.0.10` (Self-referencing for AD roles)
+- **Preferred DNS:** `10.0.0.10` (Primary for AD DS resolution)
 
 > **Network Configuration Screenshot:**
 > ![IPv4 Setup](./Screenshots/static-ip.png)
