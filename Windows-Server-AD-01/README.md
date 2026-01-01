@@ -32,6 +32,8 @@ To resolve this, I performed the following troubleshooting steps:
 5. **Capacity & Allocation:** Set a **40 GB** maximum disk size and chose to **split the virtual disk into multiple files** for better performance and portability.
 
 > **Troubleshooting Steps Captured:**
+> ![Default VM settings]()
+> ![VM settings after removing Hard Disk & Floppy]()
 > ![Adding New Disk](./Screenshots/Scr_add_hard_disk_1.png)
 > ![Selecting SATA](./Screenshots/Scr_add_hard_disk_2.png)
 > ![Final Disk Setup](./Screenshots/Scr_add_hard_disk_4.png)
