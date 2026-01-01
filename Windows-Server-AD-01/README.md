@@ -1,7 +1,7 @@
 # Project 1: Windows Server & Active Directory Deployment
 
 ##  Overview
-[cite_start]This project involves the end-to-end installation and configuration of **Windows Server 2022 Data Center** to serve as the primary Domain Controller (DC-022) for a secure hybrid enterprise environment.[cite_end]
+This project involves the end-to-end installation and configuration of **Windows Server 2022 Data Center** to serve as the primary Domain Controller (DC-022) for a secure hybrid enterprise environment.
 
 ##  System Specifications & Resources
 | Feature | Details |
@@ -31,9 +31,9 @@ To resolve this, I performed the following troubleshooting steps:
 4. **Capacity & Allocation:** Set a **40 GB** maximum disk size and chose to **split the virtual disk into multiple files** for better performance and portability.
 
 > **Troubleshooting Steps Captured:**
-> ![Adding New Disk](./Screenshots/Scr_add_hard_disk_1.png)
-> ![Selecting SATA](./Screenshots/Scr_add_hard_disk_2.png)
-> ![Final Disk Setup](./Screenshots/Scr_add_hard_disk_4.png)
+> ![Adding New Disk](Windows-Server-AD-01/Screenshots/Scr add hard disk 1.png)
+> ![Selecting SATA](Windows-Server-AD-01/Screenshots/Scr add hard disk 1.png)
+> ![Final Disk Setup](Windows-Server-AD-01/Screenshots/Scr add hard disk 1.png)
 
 ###  Result
 After reconfiguring the disk hardware, the installer successfully identified the drive, allowing the installation to proceed.
