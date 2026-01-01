@@ -21,7 +21,7 @@ During the initial setup in VMware Workstation, a critical issue was encountered
 Upon reaching the operating system selection screen, the installer displayed an error: **"No images are available"**. This was likely due to a conflict with the virtual hard disk controller type or the initial disk configuration.
 
 > **Visual Evidence of Error:**
-> ![OS Image Error](./Windows-Server-AD-01/Screenshots/Scr Image problem.png)
+> ![OS Image Error](./Screenshots/Scr_Image_problem.png)
 
 ###  The Solution: Disk Reconfiguration
 To resolve this, I performed the following troubleshooting steps:
@@ -31,9 +31,9 @@ To resolve this, I performed the following troubleshooting steps:
 4. **Capacity & Allocation:** Set a **40 GB** maximum disk size and chose to **split the virtual disk into multiple files** for better performance and portability.
 
 > **Troubleshooting Steps Captured:**
-> ![Adding New Disk](Windows-Server-AD-01/Screenshots/Scr add hard disk 1.png)
-> ![Selecting SATA](Windows-Server-AD-01/Screenshots/Scr add hard disk 1.png)
-> ![Final Disk Setup](Windows-Server-AD-01/Screenshots/Scr add hard disk 1.png)
+> ![Adding New Disk](./Screenshots/Scr_add_hard_disk_1.png)
+> ![Selecting SATA](./Screenshots/Scr_add_hard_disk_1.png)
+> ![Final Disk Setup](./Screenshots/Scr_add_hard_disk_1.png)
 
 ###  Result
 After reconfiguring the disk hardware, the installer successfully identified the drive, allowing the installation to proceed.
