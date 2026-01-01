@@ -1,0 +1,17 @@
+# Windows thumbnails
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VMware files
+*.log
+*.vmdk
+*.vmem
+*.vmsd
+*.vmss
+*.vmx
+*.vmxf
+*.vmsn
+
+# System Files
+.DS_Store
