@@ -8,7 +8,7 @@ This project involves the end-to-end installation and configuration of **Windows
 | :--- | :--- |
 | **Operating System** | Windows Server 2022 Data Center |
 | **Hostname** | DC-022 |
-| **RAM** | 2 GB (Optimized for 15-20 users) |
+| **RAM** | 2 GB (Optimized for 20 users) |
 | **CPU** | 2 Cores |
 | **Storage** | 40 GB SATA |
 
@@ -21,7 +21,7 @@ During the initial setup in VMware Workstation, a critical issue was encountered
 Upon reaching the operating system selection screen, the installer displayed an error: **"No images are available"**. This was likely due to a conflict with the virtual hard disk controller type or the initial disk configuration.
 
 > **Visual Evidence of Error:**
-> ![OS Image Error](./images/Scr_Image_problem.png)
+> ![OS Image Error](./Windows-Server-AD-01/Screenshots/Scr Image problem.png)
 
 ###  The Solution: Disk Reconfiguration
 To resolve this, I performed the following troubleshooting steps:
