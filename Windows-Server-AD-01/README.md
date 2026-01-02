@@ -118,9 +118,33 @@ To verify the integrity of the Domain Controller, I executed a service health ch
 > **Verification Screenshot:**
 > ![Active Directory Services Status](./Screenshots/AD_20.png)
 
+##  Phase 4: Directory Services & Objects Management
+Designed and implemented a professional Active Directory hierarchy to emulate a real-world enterprise environment.
+
+###  Organizational Structure
+Created a structured hierarchy under the root OU `SOCOT_Corp` to ensure granular control over network objects:
+- **Admin-Users:** Reserved for high-privileged accounts.
+- **Standard-Users:** Contains general staff accounts for security simulation.
+- **Groups:** Centralized security and distribution group management.
+- **Workstations:** Dedicated container for domain-joined assets.
+
+###  User Provisioning
+Populated the directory with multiple user objects to simulate a busy corporate network, facilitating future security testing and auditing.
+
+> **Final Directory Structure & User List:**
+> ![OU & User Management](./Screenshots/AD_24.png)
+
+##  Phase 5: Network Services Optimization (DNS)
+Fine-tuned the DNS infrastructure to support external connectivity and advanced security auditing.
+
+- **DNS Forwarding:** Configured Google DNS (8.8.8.8) as a forwarder to enable controlled internet access for domain assets.
+- **Reverse Lookup Zone:** Implemented the `0.0.10.in-addr.arpa` zone. This is critical for mapping IP addresses back to hostnames, which is essential for investigative tasks and SIEM log enrichment.
+
+> **DNS Configuration View:**
+> ![DNS Management](./Screenshots/AD_24.png)
 
 ## 🎯 Current Status & Next Steps
 - [x] [cite_start]OS Installation & Troubleshooting.
 - [x] Static IP & Hostname (DC-022) Configuration.
 - [x] Active Directory Domain Services (AD DS) Role Installation.
-- [x] [cite_start]Organizational Unit (OU) & Group Policy (GPO) implementation.
+- [x] Organizational Unit (OU) & Group Policy (GPO) implementation.
