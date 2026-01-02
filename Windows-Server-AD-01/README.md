@@ -141,7 +141,8 @@ Fine-tuned the DNS infrastructure to support external connectivity and advanced 
 - **Reverse Lookup Zone:** Implemented the `0.0.10.in-addr.arpa` zone. This is critical for mapping IP addresses back to hostnames, which is essential for investigative tasks and SIEM log enrichment.
 
 > **DNS Configuration View:**
-> ![DNS Management](./Screenshots/AD_24.png)
+> ![DNS Forwarding](./Screenshots/AD_28.png)
+> ![Reverse Lookup Zone](./Screenshots/AD_31.png)
 
 ## 🎯 Current Status & Next Steps
 - [x] [cite_start]OS Installation & Troubleshooting.
