@@ -63,6 +63,42 @@ The installation was completed
 
 ---
 
+##  Phase 3: Domain Services Implementation
+Successfully initiated the deployment of core identity services.
+
+- **Roles Selected:** AD DS & DNS Server.
+- **Implementation Method:** Simultaneous installation for integrated zone management.
+
+> **Role Selection Screenshot:**
+![AD DS & DNS Installation](./Screenshots/AD_X.png)
+
+###  Role Installation Success
+The core services have been successfully installed on **DC-2022**.
+
+* **Services Installed:** AD DS, DNS Server, and Group Policy Management.
+* **Status:** Installation succeeded, pending promotion to Domain Controller.
+
+> **Evidence:**
+> ![Installation Progress](./Screenshots/AD_Z.png)
+
+##  Forest Creation & Infrastructure Naming
+To align with enterprise standards, I have opted for a dedicated internal namespace.
+
+* **Root Domain Name:** `SOC.local`
+* **Functional Level:** Windows Server 2016 (Ensuring modern security features like Protected Users Group).
+* **Design Choice:** Used `.local` to ensure a completely isolated environment, mimicking a secure corporate internal network (Intranet).
+
+> **Configuration Screenshot:**
+> ![New Forest Setup](./Screenshots/AD_11.png)
+
+###  Prerequisites Verification
+Before final promotion, the system performed a mandatory check. 
+- **Result:** All checks passed successfully.
+- **Note on Warnings:** DNS Delegation warning is expected as this is the first root DNS server in a new forest.
+
+> **Verification Evidence:**
+> ![Prerequisites Check](./Screenshots/AD_17.png)
+
 ##  Phase 3 Complete: Domain Controller Live
 The server **DC-2022** is now the primary Domain Controller for the `SOC.local` forest.
 
@@ -73,10 +109,18 @@ The server **DC-2022** is now the primary Domain Controller for the `SOC.local` 
 
 ###  Post-Installation Verification:
 The Server Manager dashboard confirms all services are operational and healthy.
-![Domain Controller Status](./images/image_7af087.png)
+![Domain Controller Status](./Screenshots/AD_19.png)
+
+To verify the integrity of the Domain Controller, I executed a service health check via PowerShell:
+- **Command:** `Get-Service adws, kdc, netlogon, dns`
+- **Result:** All critical identity services are confirmed **Running**.
+
+> **Verification Screenshot:**
+> ![Active Directory Services Status](./Screenshots/AD_20.png)
+
 
 ## 🎯 Current Status & Next Steps
 - [x] [cite_start]OS Installation & Troubleshooting.
 - [x] Static IP & Hostname (DC-022) Configuration.
 - [x] Active Directory Domain Services (AD DS) Role Installation.
-- [ ] [cite_start]Organizational Unit (OU) & Group Policy (GPO) implementation.
+- [x] [cite_start]Organizational Unit (OU) & Group Policy (GPO) implementation.
