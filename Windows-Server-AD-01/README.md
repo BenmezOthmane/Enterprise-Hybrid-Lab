@@ -132,7 +132,7 @@ Created a structured hierarchy under the root OU `SOCOT_Corp` to ensure granular
 Populated the directory with multiple user objects to simulate a busy corporate network, facilitating future security testing and auditing.
 
 > **Final Directory Structure & User List:**
-> ![OU & User Management](./Screenshots/AD_24.png)
+> ![OU & User Management](./Screenshots/Ad_24.png)
 
 ##  Phase 5: Network Services Optimization (DNS)
 Fine-tuned the DNS infrastructure to support external connectivity and advanced security auditing.
