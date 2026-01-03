@@ -161,8 +161,22 @@ The "Active Directory Users and Computers" console confirms that the logical str
 > ![Final Administrative Structure](./Screenshots/AD34.png)
 
 
-## 🎯 Current Status & Next Steps
-- [x] [cite_start]OS Installation & Troubleshooting.
-- [x] Static IP & Hostname (DC-022) Configuration.
-- [x] Active Directory Domain Services (AD DS) Role Installation.
-- [x] Organizational Unit (OU) & Group Policy (GPO) implementation.
+## 🛡️ Phase 7: Perimeter Security & Network Segmentation (pfSense)
+
+To transition from a simple lab to an enterprise-grade secure environment, I am deploying **pfSense** as a perimeter firewall. This phase focuses on internal network segmentation to isolate critical assets from potential threats.
+
+### 🌐 Step 1: Virtual Networking & Segmentation
+To achieve a high-fidelity enterprise simulation, I configured dedicated **LAN Segments** within VMware to enforce strict traffic isolation:
+
+* **Corporate_Network**: An isolated segment for internal assets (Domain Controller & Workstations).
+* **Attacker_Zone**: A restricted environment for adversary simulation tools.
+
+> **Evidence of Configuration:**
+> - [View LAN Segments Setup](./Screenshots/AD35.png)
+> - [Server Network Mapping to Corporate Segment](./Screenshots/AD36.png)
+
+### 🛠️ Hardware Virtualization (VMware Settings)
+- **CPU:** 1 Core
+- **RAM:** 1 GB
+- **Storage:** 20 GB
+- **Interfaces:** 3 Virtual NICs mapped to specific LAN Segments.
