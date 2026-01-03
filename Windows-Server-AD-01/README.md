@@ -1,4 +1,4 @@
-# Project 1: Windows Server & Active Directory Deployment
+# Project 1: Secure Enterprise Infrastructure & SOC Lab Deployment
 
 ##  Overview
 This project involves the end-to-end installation and configuration of **Windows Server 2022 Data Center** to serve as the primary Domain Controller (DC-022) for a secure hybrid enterprise environment.
