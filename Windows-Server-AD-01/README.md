@@ -145,19 +145,20 @@ Fine-tuned the DNS infrastructure to support external connectivity and advanced 
 > ![Reverse Lookup Zone](./Screenshots/AD_31.png)
 
 ##  Phase 6: Role-Based Access Control (RBAC) Implementation
-To mimic a real enterprise security posture, I have implemented a strict group-based management system.
+
+To mimic a real-world enterprise security posture, I have implemented a strict **Group-Based Access Control** system. This ensures that permissions are managed at the group level rather than individual assignments, facilitating easier auditing and scalability.
 
 ###  Group Strategy
-Objects are managed via specific Security Groups rather than individual assignments to ensure scalability and security:
-- **GRP_IT_Admins:** Full administrative control over infrastructure.
-- **GRP_Security_Auditors:** Read-only access for monitoring and log collection (Essential for SOC operations).
-- **Departmental Groups (HR, Sales):** Isolated groups for standard user management.
+I have established specialized Security Groups within the `Groups` OU to enforce the Principle of Least Privilege (PoLP):
+* **`GRP_IT_Admins`**: Full administrative control over the domain infrastructure.
+* **`GRP_Security_Auditors`**: Configured with Read-only access for monitoring and centralized log collection—a critical role for future SOC operations and SIEM integration.
+* **Departmental Groups (`GRP_HR_Users`, `GRP_Sales_Users`)**: Isolated groups created to manage standard users based on their corporate roles.
 
 ###  Verification
-The "Active Directory Users and Computers" console confirms that all users are now organized within their respective departments and security groups.
+The "Active Directory Users and Computers" console confirms that the logical structure is correctly populated, with users (e.g., Ahmed, Amine, Kareem) organized within their respective departments and linked to their security groups.
 
-> **Final Administrative Structure:**
-> ![Group Management](./Screenshots/AD34.png)
+> **Administrative Structure Preview:**
+> ![Final Administrative Structure](./Screenshots/AD34.png)
 
 
 ## 🎯 Current Status & Next Steps
