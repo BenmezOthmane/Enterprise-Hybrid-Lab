@@ -157,7 +157,7 @@ Objects are managed via specific Security Groups rather than individual assignme
 The "Active Directory Users and Computers" console confirms that all users are now organized within their respective departments and security groups.
 
 > **Final Administrative Structure:**
-> ![Group Management](./images/image_dd8dea.png)
+> ![Group Management](./Screenshots/AD34.png)
 
 
 ## 🎯 Current Status & Next Steps
