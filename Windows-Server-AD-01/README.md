@@ -165,21 +165,15 @@ The "Active Directory Users and Computers" console confirms that the logical str
 
 To transition from a basic lab to a high-fidelity enterprise environment, I implemented a **Three-Tier Network Architecture**. This phase focuses on isolating critical infrastructure from external threats and adversary simulation zones using **pfSense** as the core security gateway.
 
-###  Hardware Virtualization (VMware Settings)
-- **CPU:** 1 Core
-- **RAM:** 1 GB
-- **Storage:** 20 GB
-- **Interfaces:** 3 Virtual NICs mapped to specific LAN Segments.
-- 
 ###  Network Design & Segmentation
 Using VMware Global LAN Segments, I enforced strict hardware-level isolation to emulate real-world security zones:
-
 * **WAN (Internet):** Interfaces with the host machine via NAT to simulate an ISP uplink.
 * **Corporate_Network (LAN):** A private, isolated segment dedicated to the Windows Server (DC-022) and authorized workstations.
 * **Attacker_Zone (OPT1):** A restricted, isolated segment for adversary simulation tools (e.g., Kali Linux), preventing lateral movement to the production environment.
 
-###  Hardware Virtualization (pfSense Node)
-The firewall was provisioned with the following resources and interface mappings:
+###  pfSense Node Specifications & Interface Mapping
+The firewall was provisioned with **1 Core CPU**, **1 GB RAM**, and **20 GB Storage**. The interfaces are mapped as follows:
+
 | Interface | Type | Mapping | Purpose |
 | :--- | :--- | :--- | :--- |
 | **Adapter 1** | WAN | NAT | ISP Simulation / Updates |
@@ -192,7 +186,6 @@ The firewall was provisioned with the following resources and interface mappings
 > - **Network Hardening (DC-022):** ![Server Isolation](./Screenshots/AD36.png)
 
 ###  Implementation Steps
-1.  **Environment Provisioning:** Defined global LAN segments in VMware to act as virtual switches.
-2.  **Asset Isolation:** Reconfigured `DC-022` to reside exclusively within the `Corporate_Network` segment.
-3.  **Firewall Deployment:** Initiated the installation of pfSense (FreeBSD-based) to act as the primary inspector between all three zones.
-
+1. **Environment Provisioning:** Defined global LAN segments in VMware to act as virtual switches.
+2. **Asset Isolation:** Reconfigured `DC-022` to reside exclusively within the `Corporate_Network` segment.
+3. **Firewall Deployment:** Initiated the installation of pfSense (FreeBSD-based) to act as the primary inspector between all three zones.
