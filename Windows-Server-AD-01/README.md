@@ -144,16 +144,16 @@ Fine-tuned the DNS infrastructure to support external connectivity and advanced 
 > ![DNS Forwarding](./Screenshots/AD_28.png)
 > ![Reverse Lookup Zone](./Screenshots/AD_31.png)
 
-## 🛡️ Phase 6: Role-Based Access Control (RBAC) Implementation
+##  Phase 6: Role-Based Access Control (RBAC) Implementation
 To mimic a real enterprise security posture, I have implemented a strict group-based management system.
 
-### 👥 Group Strategy
+###  Group Strategy
 Objects are managed via specific Security Groups rather than individual assignments to ensure scalability and security:
 - **GRP_IT_Admins:** Full administrative control over infrastructure.
 - **GRP_Security_Auditors:** Read-only access for monitoring and log collection (Essential for SOC operations).
 - **Departmental Groups (HR, Sales):** Isolated groups for standard user management.
 
-### ✅ Verification
+###  Verification
 The "Active Directory Users and Computers" console confirms that all users are now organized within their respective departments and security groups.
 
 > **Final Administrative Structure:**
