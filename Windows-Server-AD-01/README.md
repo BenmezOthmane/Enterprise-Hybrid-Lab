@@ -163,18 +163,32 @@ The "Active Directory Users and Computers" console confirms that the logical str
 
 ## 🛡️ Phase 7: Perimeter Security & Network Segmentation (pfSense)
 
-To transition from a simple lab to an enterprise-grade secure environment, I am deploying **pfSense** as a perimeter firewall. This phase focuses on internal network segmentation to isolate critical assets from potential threats.
+To transition from a basic lab to a high-fidelity enterprise environment, I implemented a **Three-Tier Network Architecture**. This phase focuses on isolating critical infrastructure from external threats and adversary simulation zones using **pfSense** as the core security gateway.
 
-### 🌐 Step 1: Virtual Networking & Segmentation
-To achieve a high-fidelity enterprise simulation, I configured dedicated **LAN Segments** within VMware to enforce strict traffic isolation:
+### 🏗️ Network Design & Segmentation
+Using VMware Global LAN Segments, I enforced strict hardware-level isolation to emulate real-world security zones:
 
-* **Corporate_Network**: An isolated segment for internal assets (Domain Controller & Workstations).
-* **Attacker_Zone**: A restricted environment for adversary simulation tools.
+* **WAN (Internet):** Interfaces with the host machine via NAT to simulate an ISP uplink.
+* **Corporate_Network (LAN):** A private, isolated segment dedicated to the Windows Server (DC-022) and authorized workstations.
+* **Attacker_Zone (OPT1):** A restricted, isolated segment for adversary simulation tools (e.g., Kali Linux), preventing lateral movement to the production environment.
 
-> **Evidence of Configuration:**
-> - [View LAN Segments Setup](./Screenshots/AD35.png)
-> - [Server Network Mapping to Corporate Segment](./Screenshots/AD36.png)
+### 🛠️ Hardware Virtualization (pfSense Node)
+The firewall was provisioned with the following resources and interface mappings:
+| Interface | Type | Mapping | Purpose |
+| :--- | :--- | :--- | :--- |
+| **Adapter 1** | WAN | NAT | ISP Simulation / Updates |
+| **Adapter 2** | LAN | Corporate_Network | Domain Controller Gateway |
+| **Adapter 3** | OPT1 | Attacker_Zone | Security Testing Isolation |
 
+> **System Evidence:**
+> - **LAN Segments Configuration:** ![LAN Segments](./Screenshots/AD35.png)
+> - **pfSense Interface Assignment:** ![Interface Mapping](./Screenshots/PS1.png)
+> - **Network Hardening (DC-022):** ![Server Isolation](./Screenshots/AD36.png)
+
+### 🚀 Implementation Steps
+1.  **Environment Provisioning:** Defined global LAN segments in VMware to act as virtual switches.
+2.  **Asset Isolation:** Reconfigured `DC-022` to reside exclusively within the `Corporate_Network` segment.
+3.  **Firewall Deployment:** Initiated the installation of pfSense (FreeBSD-based) to act as the primary inspector between all three zones.
 ### 🛠️ Hardware Virtualization (VMware Settings)
 - **CPU:** 1 Core
 - **RAM:** 1 GB
