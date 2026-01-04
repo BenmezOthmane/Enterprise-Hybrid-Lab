@@ -160,7 +160,6 @@ The "Active Directory Users and Computers" console confirms that the logical str
 > **Administrative Structure Preview:**
 > ![Final Administrative Structure](./Screenshots/AD34.png)
 
-
 ##  Phase 7: Perimeter Security & Network Segmentation (pfSense)
 
 To transition from a basic lab to a high-fidelity enterprise environment, I implemented a **Three-Tier Network Architecture**. This phase focuses on isolating critical infrastructure from external threats and adversary simulation zones using **pfSense** as the core security gateway.
@@ -171,21 +170,87 @@ Using VMware Global LAN Segments, I enforced strict hardware-level isolation to 
 * **Corporate_Network (LAN):** A private, isolated segment dedicated to the Windows Server (DC-022) and authorized workstations.
 * **Attacker_Zone (OPT1):** A restricted, isolated segment for adversary simulation tools (e.g., Kali Linux), preventing lateral movement to the production environment.
 
-###  pfSense Node Specifications & Interface Mapping
-The firewall was provisioned with **1 Core CPU**, **1 GB RAM**, and **20 GB Storage**. The interfaces are mapped as follows:
 
-| Interface | Type | Mapping | Purpose |
-| :--- | :--- | :--- | :--- |
-| **Adapter 1** | WAN | NAT | ISP Simulation / Updates |
-| **Adapter 2** | LAN | Corporate_Network | Domain Controller Gateway |
-| **Adapter 3** | OPT1 | Attacker_Zone | Security Testing Isolation |
 
-> **System Evidence:**
-> - **LAN Segments Configuration:** ![LAN Segments](./Screenshots/AD35.png)
-> - **pfSense Interface Assignment:** ![Interface Mapping](./Screenshots/PS1.png)
-> - **Network Hardening (DC-022):** ![Server Isolation](./Screenshots/AD36.png)
+#  Building a Multi-Segmented SOC Lab: pfSense (FreeBSD) Deployment Phase
 
-###  Implementation Steps
-1. **Environment Provisioning:** Defined global LAN segments in VMware to act as virtual switches.
-2. **Asset Isolation:** Reconfigured `DC-022` to reside exclusively within the `Corporate_Network` segment.
-3. **Firewall Deployment:** Initiated the installation of pfSense (FreeBSD-based) to act as the primary inspector between all three zones.
+---
+
+##  Phase 8: Virtual Infrastructure & Architecture
+The firewall is provisioned on VMware Workstation using a FreeBSD-based guest operating system.
+
+### pfSense Node Specifications:
+* **Memory:** 1 GB
+* **Processor:** 1 Core
+* **Storage:** 20 GB
+* **Network Adapters:** 1. **Adapter 1 (WAN):** NAT (ISP Simulation / Updates)
+    2. **Adapter 2 (LAN):** LAN Segment (Corporate_Network)
+    3. **Adapter 3 (OPT1):** LAN Segment (Attacker_Zone)
+
+### Interface Mapping & Addressing:
+| Interface | Assigned Name | Mapping | IP Address | Purpose |
+| :--- | :--- | :--- | :--- | :--- |
+| **em0** | WAN | NAT | 192.168.149.129/24 | ISP Simulation / Updates |
+| **em1** | LAN | Corporate_Network | 10.0.0.1/8 | Domain Controller Gateway |
+| **em2** | OPT1 | Attacker_Zone | 172.16.0.1/24 | Security Testing Isolation |
+
+---
+
+##  Phase 9: Installation & Advanced Troubleshooting
+
+### 1. Environment Provisioning
+* Defined global LAN segments in VMware to act as virtual switches for network isolation.
+* Reconfigured asset `DC-022` (Windows Server 2022) to reside exclusively within the `Corporate_Network` segment.
+
+### 2. Resolving the "Pager Read Error" 
+Immediately following the FreeBSD-based installation, the system encountered a `vm_fault: pager read error` and failed to stabilize.
+
+* **The Problem:** A hardware state conflict occurred where the system failed to correctly hand off the boot process from the ISO installer to the virtual disk.
+* **The Resolution Path:** 1. Performed a hard power cycle of the virtual machine.
+    2. Refreshed the hardware connection settings for the virtual CD/DVD and disk drives.
+    3. Successfully stabilized the boot process, allowing **pfSense 2.8.1-RELEASE (amd64)** to initialize.
+
+---
+
+##  Phase 10: Console-Level Configuration
+
+After stabilization, the FreeBSD-based console menu was used to map and configure the three network interfaces.
+
+### A. Interface Mapping
+Mapped logical pfSense interfaces to physical FreeBSD drivers:
+* **WAN** -> `em0`
+* **LAN** -> `em1`
+* **OPT1** -> `em2`
+
+### B. Adversarial Zone (OPT1) Setup
+Static IP and DHCP services were manually enabled for the OPT1 segment to automate attacker machine connectivity:
+* **Static IPv4:** `172.16.0.1/24`.
+* **DHCP Range:** `172.16.0.10` to `172.16.0.50`.
+* **WebConfigurator:** Defaulted to HTTPS via port 443.
+
+---
+
+##  Phase 11: Connectivity & Segment Validation
+
+Connectivity was verified from the **Windows Server 2022** (DC-022) instance located in the LAN segment to the firewall gateway.
+
+![Ping Success](image_2eb229.png)
+*Figure 1: Verified ICMP reply from 10.0.0.1 with <1ms latency confirming successful server isolation and gateway routing.*
+
+---
+
+##  Phase 12: Initial WebConfigurator Wizard
+
+The management interface was accessed via `https://10.0.0.1` on the internal network.
+
+### Initial Wizard Parameters:
+* **Hostname:** `Firewall`
+* **Domain:** `SOC.local`
+* **Primary DNS:** `8.8.8.8`
+
+---
+
+## 🚀 Next Steps
+- [ ] Complete the Web GUI Wizard.
+- [ ] **WAN Hardening:** Uncheck "Block Private Networks" for NAT compatibility.
+- [ ] **Firewall Policies:** Define rules for cross-segment traffic.
