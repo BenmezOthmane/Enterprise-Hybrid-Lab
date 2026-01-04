@@ -187,14 +187,16 @@ The firewall is provisioned on VMware Workstation using a FreeBSD-based guest op
     2. **Adapter 2 (LAN):** LAN Segment (Corporate_Network)
     3. **Adapter 3 (OPT1):** LAN Segment (Attacker_Zone)
 
+> ![LAN Segments](./Screenshots/PS1.png)  
+
 ### Interface Mapping & Addressing:
 | Interface | Assigned Name | Mapping | IP Address | Purpose |
 | :--- | :--- | :--- | :--- | :--- |
 | **em0** | WAN | NAT | 192.168.149.129/24 | ISP Simulation / Updates |
 | **em1** | LAN | Corporate_Network | 10.0.0.1/8 | Domain Controller Gateway |
-| **em2** | OPT1 | Attacker_Zone | 172.16.0.1/24 | Security Testing Isolation |
+| **em2** | OPT1 | Attacker_Zone | 172.16.0.1/24 | Security Testing Isolation 
 
----
+> ![Network Adapters](./Screenshots/PS2.png)  
 
 ##  Phase 9: Installation & Advanced Troubleshooting
 
