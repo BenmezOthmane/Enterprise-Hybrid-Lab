@@ -187,7 +187,7 @@ The firewall is provisioned on VMware Workstation using a FreeBSD-based guest op
     2. **Adapter 2 (LAN):** LAN Segment (Corporate_Network)
     3. **Adapter 3 (OPT1):** LAN Segment (Attacker_Zone)
 
-> ![LAN Segments](./Screenshots/PS1.png)  
+> ![LAN Segments](./Screenshots/AD35.png)  
 
 ### Interface Mapping & Addressing:
 | Interface | Assigned Name | Mapping | IP Address | Purpose |
@@ -204,6 +204,8 @@ The firewall is provisioned on VMware Workstation using a FreeBSD-based guest op
 * Defined global LAN segments in VMware to act as virtual switches for network isolation.
 * Reconfigured asset `DC-022` (Windows Server 2022) to reside exclusively within the `Corporate_Network` segment.
 
+> ![LAN em1](./Screenshots/PS8.png)  
+
 ### 2. Resolving the "Pager Read Error" 
 Immediately following the FreeBSD-based installation, the system encountered a `vm_fault: pager read error` and failed to stabilize.
 
@@ -212,7 +214,7 @@ Immediately following the FreeBSD-based installation, the system encountered a `
     2. Refreshed the hardware connection settings for the virtual CD/DVD and disk drives.
     3. Successfully stabilized the boot process, allowing **pfSense 2.8.1-RELEASE (amd64)** to initialize.
 
----
+> ![pager read error](./Screenshots/vmfault.png)  
 
 ##  Phase 10: Console-Level Configuration
 
@@ -224,13 +226,13 @@ Mapped logical pfSense interfaces to physical FreeBSD drivers:
 * **LAN** -> `em1`
 * **OPT1** -> `em2`
 
+> ![menu](./Screenshots/menu.png)  
+
 ### B. Adversarial Zone (OPT1) Setup
 Static IP and DHCP services were manually enabled for the OPT1 segment to automate attacker machine connectivity:
 * **Static IPv4:** `172.16.0.1/24`.
 * **DHCP Range:** `172.16.0.10` to `172.16.0.50`.
 * **WebConfigurator:** Defaulted to HTTPS via port 443.
-
----
 
 ##  Phase 11: Connectivity & Segment Validation
 
@@ -238,8 +240,6 @@ Connectivity was verified from the **Windows Server 2022** (DC-022) instance loc
 
 ![Ping Success](./Screenshots/PS.1.png)
 *Figure 1: Verified ICMP reply from 10.0.0.1 with <1ms latency confirming successful server isolation and gateway routing.*
-
----
 
 ##  Phase 12: Initial WebConfigurator Wizard
 
@@ -250,9 +250,4 @@ The management interface was accessed via `https://10.0.0.1` on the internal net
 * **Domain:** `SOC.local`
 * **Primary DNS:** `8.8.8.8`
 
----
 
-## 🚀 Next Steps
-- [ ] Complete the Web GUI Wizard.
-- [ ] **WAN Hardening:** Uncheck "Block Private Networks" for NAT compatibility.
-- [ ] **Firewall Policies:** Define rules for cross-segment traffic.
