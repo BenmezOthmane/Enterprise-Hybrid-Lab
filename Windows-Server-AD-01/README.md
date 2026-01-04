@@ -234,6 +234,8 @@ Static IP and DHCP services were manually enabled for the OPT1 segment to automa
 * **DHCP Range:** `172.16.0.10` to `172.16.0.50`.
 * **WebConfigurator:** Defaulted to HTTPS via port 443.
 
+> ![range](./Screenshots/range.png)  
+
 ##  Phase 11: Connectivity & Segment Validation
 
 Connectivity was verified from the **Windows Server 2022** (DC-022) instance located in the LAN segment to the firewall gateway.
