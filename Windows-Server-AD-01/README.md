@@ -187,7 +187,6 @@ The firewall is provisioned on VMware Workstation using a FreeBSD-based guest op
     2. **Adapter 2 (LAN):** LAN Segment (Corporate_Network)
     3. **Adapter 3 (OPT1):** LAN Segment (Attacker_Zone)
 
-> ![LAN Segments](./Screenshots/AD35.png)  
 
 ### Interface Mapping & Addressing:
 | Interface | Assigned Name | Mapping | IP Address | Purpose |
