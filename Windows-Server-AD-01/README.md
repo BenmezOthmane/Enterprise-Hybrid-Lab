@@ -242,13 +242,59 @@ Connectivity was verified from the **Windows Server 2022** (DC-022) instance loc
 ![Ping Success](./Screenshots/PS.1.png)
 *Figure 1: Verified ICMP reply from 10.0.0.1 with <1ms latency confirming successful server isolation and gateway routing.*
 
-##  Phase 12: Initial WebConfigurator Wizard
+# Phase 12: Perimeter Security & Gateway Deployment (pfSense)
 
-The management interface was accessed via `https://10.0.0.1` on the internal network.
+In this phase, I transitioned the lab from a flat network to a **Segmented Enterprise Architecture** by deploying **pfSense (FreeBSD)**. This firewall acts as the "Protector" of the corporate network and the "Inspector" for all traffic between the lab zones.
 
 ### Initial Wizard Parameters:
+To align with the enterprise identity created in previous phases, the following parameters were set:
 * **Hostname:** `Firewall`
-* **Domain:** `SOC.local`
-* **Primary DNS:** `8.8.8.8`
+* **Domain:** `SOC.local` (Matching the AD Forest)
+* **Primary DNS:** `8.8.8.8` (Google DNS for initial external resolution)
 
 
+## 1. Network Interface Topology
+The firewall was provisioned with three distinct network adapters in VMware, mapped to logical LAN segments for hardware-level isolation:
+
+| Interface | Alias | Assignment | IP Address | Role |
+| :--- | :--- | :--- | :--- | :--- |
+| **em0** | WAN | NAT | 192.168.149.129/24 | ISP Uplink / Internet Access |
+| **em1** | LAN | Corporate_Network | 10.0.0.1/8 | Gateway for DC-022 |
+| **em2** | OPT1 | Attacker_Zone | 172.16.0.1/24 | Isolated Malware/Attacker Lab |
+
+
+## 2. WAN Interface Hardening & Configuration
+During the initial Setup Wizard (Step 4 of 9), I applied specific configurations to ensure the firewall functions correctly within a virtualized environment.
+
+### Bypassing Private Network Blocking
+Since the WAN interface receives a private IP (`192.168.x.x`) from the host's VMware NAT service, I adjusted the security policy:
+* **RFC1918 Networks:** Disabled "Block RFC1918 Private Networks" to allow traffic from the virtual host.
+* **Bogon Networks:** Disabled "Block bogon networks" for internal virtualization routing.
+
+> **Evidence of Configuration:**
+> ![pfSense WAN Security Setup](./Screenshots/pps2.png)
+
+
+## 3. Post-Deployment Dashboard & System Health
+After completing the wizard, the pfSense WebGUI confirmed a stable and healthy system state.
+
+### System Verification:
+* **Version:** 2.8.1-RELEASE (amd64).
+* **Uptime:** System stabilized after the initial pager read error resolution.
+* **DNS Resolution:** Configured with `127.0.0.1` and `192.168.149.2`.
+
+> **Status Dashboard:**
+> ![pfSense Final Dashboard](./Screenshots/pps3.png)
+
+
+## 4. Final Validation: Internet Connectivity Test
+To verify **NAT** and **Routing**, I performed a live connectivity test from **DC-022**.
+
+* **Result:** **Success**. The Domain Controller can now reach the internet securely through the pfSense gateway.
+
+> **Connectivity Proof:**
+> ![Internet Connectivity Check](./Screenshots/pps4.png)
+
+
+##  Next Milestone: SOC Management Layer (Ubuntu Server)
+With the network and identity layers operational, we move to deploying **Ubuntu Server** for **Wazuh** and **Zabbix** monitoring.
