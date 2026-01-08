@@ -65,7 +65,7 @@ Static IP and DHCP services were manually enabled for the OPT1 segment to automa
 
 Connectivity was verified from the **Windows Server 2022** (DC-022) instance located in the LAN segment to the firewall gateway.
 
-![Ping Success](./Screenshots/PS.1.png)
+![Ping Success](./Screenshots/PS1.png)
 *Figure 1: Verified ICMP reply from 10.0.0.1 with <1ms latency confirming successful server isolation and gateway routing.*
 
 # Phase 5: Perimeter Security & Gateway Deployment (pfSense)
