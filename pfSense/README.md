@@ -29,7 +29,7 @@ The firewall is provisioned on VMware Workstation using a FreeBSD-based guest op
 * Defined global LAN segments in VMware to act as virtual switches for network isolation.
 * Reconfigured asset `DC-022` (Windows Server 2022) to reside exclusively within the `Corporate_Network` segment.
 
-> ![LAN em1](./Windows-Server-AD-01/Screenshots/PS8.png)  
+> ![LAN em1](./Enterprise-Hybrid-Lab/Windows-Server-AD-01/Screenshots/PS8.png)  
 
 ### 2. Resolving the "Pager Read Error" 
 Immediately following the FreeBSD-based installation, the system encountered a `vm_fault: pager read error` and failed to stabilize.
@@ -39,7 +39,7 @@ Immediately following the FreeBSD-based installation, the system encountered a `
     2. Refreshed the hardware connection settings for the virtual CD/DVD and disk drives.
     3. Successfully stabilized the boot process, allowing **pfSense 2.8.1-RELEASE (amd64)** to initialize.
 
-> ![pager read error](./Windows-Server-AD-01/Screenshots/vmfault.png)  
+> ![pager read error](./Enterprise-Hybrid-Lab/Windows-Server-AD-01/Screenshots/vmfault.png)  
 
 ##  Phase 3: Console-Level Configuration
 
@@ -51,7 +51,7 @@ Mapped logical pfSense interfaces to physical FreeBSD drivers:
 * **LAN** -> `em1`
 * **OPT1** -> `em2`
 
-> ![menu](./Windows-Server-AD-01/Screenshots/menu.png)  
+> ![menu](./Enterprise-Hybrid-Lab/Windows-Server-AD-01/Screenshots/menu.png)  
 
 ### B. Adversarial Zone (OPT1) Setup
 Static IP and DHCP services were manually enabled for the OPT1 segment to automate attacker machine connectivity:
@@ -59,13 +59,13 @@ Static IP and DHCP services were manually enabled for the OPT1 segment to automa
 * **DHCP Range:** `172.16.0.10` to `172.16.0.50`.
 * **WebConfigurator:** Defaulted to HTTPS via port 443.
 
-> ![range](./Windows-Server-AD-01/Screenshots/range.png)  
+> ![range](./Enterprise-Hybrid-Lab/Windows-Server-AD-01/Screenshots/range.png)  
 
 ##  Phase 4: Connectivity & Segment Validation
 
 Connectivity was verified from the **Windows Server 2022** (DC-022) instance located in the LAN segment to the firewall gateway.
 
-![Ping Success](./Windows-Server-AD-01/Screenshots/PS.1.png)
+![Ping Success](./Enterprise-Hybrid-Lab/Windows-Server-AD-01/Screenshots/PS.1.png)
 *Figure 1: Verified ICMP reply from 10.0.0.1 with <1ms latency confirming successful server isolation and gateway routing.*
 
 # Phase 5: Perimeter Security & Gateway Deployment (pfSense)
@@ -98,7 +98,7 @@ Since the WAN interface receives a private IP (`192.168.x.x`) from the host's VM
 * **Bogon Networks:** Disabled "Block bogon networks" for internal virtualization routing.
 
 > **Evidence of Configuration:**
-> ![pfSense WAN Security Setup](./Windows-Server-AD-01/Screenshots/pps2.png)
+> ![pfSense WAN Security Setup](./Enterprise-Hybrid-Lab/Windows-Server-AD-01/Screenshots/pps2.png)
 
 
 ## 3. Post-Deployment Dashboard & System Health
@@ -110,7 +110,7 @@ After completing the wizard, the pfSense WebGUI confirmed a stable and healthy s
 * **DNS Resolution:** Configured with `127.0.0.1` and `192.168.149.2`.
 
 > **Status Dashboard:**
-> ![pfSense Final Dashboard](./Windows-Server-AD-01/Screenshots/pps3.png)
+> ![pfSense Final Dashboard](./Enterprise-Hybrid-Lab/Windows-Server-AD-01/Screenshots/pps3.png)
 
 
 ## 4. Final Validation: Internet Connectivity Test
@@ -119,7 +119,7 @@ To verify **NAT** and **Routing**, I performed a live connectivity test from **D
 * **Result:** **Success**. The Domain Controller can now reach the internet securely through the pfSense gateway.
 
 > **Connectivity Proof:**
-> ![Internet Connectivity Check](./Windows-Server-AD-01/Screenshots/pps4.png)
+> ![Internet Connectivity Check](./Enterprise-Hybrid-Lab/Windows-Server-AD-01/Screenshots/pps4.png)
 
 
 ##  Next Milestone: SOC Management Layer (Ubuntu Server)
