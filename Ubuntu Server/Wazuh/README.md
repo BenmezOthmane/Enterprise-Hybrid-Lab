@@ -12,3 +12,8 @@ Successfully deployed the Wazuh stack using Docker containers on the SOC Manager
 * **URL:** `https://10.0.0.20`
 * **User:** `admin`
 * **Password:** `SecretPassword`
+
+### Wazuh Security Configuration
+* **Certificate Generation:** Successfully generated SSL/TLS certificates using the `generator` container.
+* **Configuration Volume:** Verified the creation of the `/config` directory containing all necessary security keys.
+* **Deployment:** Initiated the stack deployment using `docker-compose up -d`.
