@@ -51,3 +51,16 @@ Internet Check: ping -c 4 google.com (Successful)
 Docker Check: docker --version (Successful)
 
 SSH Status: Enabled OpenSSH server for remote management
+
+## Wazuh SIEM/XDR Installation
+
+The Wazuh security stack has been successfully orchestrated using Docker Compose. All core components are operational and secured with generated SSL certificates.
+
+### Components Status:
+* **Wazuh Manager:** Centralized engine for log analysis and alert generation.
+* **Wazuh Indexer:** High-performance search and analytics engine.
+* **Wazuh Dashboard:** Web-based UI for visualization and management.
+
+### Access and Verification:
+1. **Internal IP:** `https://10.0.0.20` (Configured behind pfSense Gateway).
+2. **Container Health:** Verified that all services reached the `done` state during creation.
