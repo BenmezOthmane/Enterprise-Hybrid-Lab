@@ -15,4 +15,4 @@ In this stage, I successfully deployed the central monitoring node (SOC Manager)
 
 ###  Verification
 All containers are running correctly as shown in the deployment logs:
-![Wazuh Done Status](./Screenhots)
+![Wazuh Done Status](./Screenhots/waz2.png)
