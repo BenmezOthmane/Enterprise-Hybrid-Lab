@@ -1,19 +1,18 @@
-## Wazuh SIEM Deployment
+##  SOC Manager & Wazuh Deployment
 
-Successfully deployed the Wazuh stack using Docker containers on the SOC Manager.
+In this stage, I successfully deployed the central monitoring node (SOC Manager) using Docker containers.
 
-### Deployment Steps:
-1. Adjusted virtual memory: `vm.max_map_count=262144`.
-2. Cloned official Wazuh Docker repository (v4.9.0).
-3. Generated SSL/TLS certificates for secure internal communication.
-4. Orchestrated the stack using `docker-compose`.
+###  System Configuration
+- **Host:** Ubuntu Server (soc-manager)
+- **IP Address:** 10.0.0.20 (Static)
+- **Architecture:** Managed via pfSense firewall (10.0.0.1 gateway)
 
-### Access Details:
-* **URL:** `https://10.0.0.20`
-* **User:** `admin`
-* **Password:** `SecretPassword`
+###  Implementation Steps
+1. **Network Alignment:** Configured the static IP and DNS to ensure connectivity through the local gateway.
+2. **Infrastructure Prep:** Adjusted `vm.max_map_count` and prepared the Docker environment.
+3. **Security:** Generated self-signed SSL certificates for secure communication between nodes.
+4. **Orchestration:** Deployed the Wazuh stack (Indexer, Server, Dashboard) using `docker-compose`.
 
-### Wazuh Security Configuration
-* **Certificate Generation:** Successfully generated SSL/TLS certificates using the `generator` container.
-* **Configuration Volume:** Verified the creation of the `/config` directory containing all necessary security keys.
-* **Deployment:** Initiated the stack deployment using `docker-compose up -d`.
+###  Verification
+All containers are running correctly as shown in the deployment logs:
+![Wazuh Done Status](./Screenhots)
