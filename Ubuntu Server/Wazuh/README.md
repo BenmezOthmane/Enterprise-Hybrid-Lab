@@ -72,4 +72,23 @@ Attempting to access the SOC Web Interface resulted in a persistent loading stat
 | **Storage** | Conflict | `resource_already_exists_exception` |
 
 
-### Recommended Resolution Steps
+### Executed Remediation Steps
+
+### Phase 1: Infrastructure Optimization: Vertical Scaling
+- **Initial State**: System detected only `3869MB` of RAM, causing JVM heap errors in Wazuh Indexer.
+- **Action**: Shutdown VM and reallocated physical memory from 4GB to **8GB**.
+![settings](./Screenhots/UP.png)
+
+### Phase 2: Environment Reset
+* **Action**: Stopped and removed all active containers and the virtual network bridge.
+* **Command**: `sudo docker-compose down`.
+* **Outcome**: Successfully cleared "zombie" processes that had been running for over 14 hours.
+![Environment Reset](./Screenhots/wz01.png)
+
+### Phase 3: Sequential Service Bootstrapping
+* **Action**: Initiated a staged startup by launching the **Wazuh Indexer** as a standalone service.
+* **Verification**: Confirmed the Indexer container (`single-node_wazuh.indexer_1`) is running and has successfully bound to port `9200/tcp`.
+* **Current Uptime**: The Indexer has been stable for **20 minutes**, ensuring the API is ready for Dashboard connection.
+![Sequential Service Bootstrapping](./Screenhots/wz7.png)
+
+
