@@ -91,4 +91,14 @@ Attempting to access the SOC Web Interface resulted in a persistent loading stat
 * **Current Uptime**: The Indexer has been stable for **20 minutes**, ensuring the API is ready for Dashboard connection.
 ![Sequential Service Bootstrapping](./Screenhots/wz7.png)
 
+### Phase 4: Deploy the remaining Wazuh Stack
+Deploy the remaining Wazuh Stack (Manager and Dashboard) now that the backend service is healthy.
+* **Command**: `sudo docker-compose up -d`.
+
+### Phase 5: Successful Recovery & Service Validation
+The Wazuh login interface at `https://10.0.0.20/app/login` is now fully operational. This confirms that:
+- The **Wazuh Dashboard** has successfully established a connection with the **Indexer** on `172.18.0.2:9200`.
+- The `ECONNREFUSED` error has been fully resolved.
+- The system is now ready for the **Attack Simulation** phase.
+![The Wazuh login interface](./Screenhots/wz_pa.png)
 
