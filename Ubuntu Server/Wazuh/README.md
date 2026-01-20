@@ -15,7 +15,7 @@ In this stage, I successfully deployed the central monitoring node (SOC Manager)
 
 ###  Verification
 All containers are running correctly as shown in the deployment logs:
-![Wazuh Done Status](./Screenhots/wazz.png)
+![Wazuh Done Status](./Screenhots/waz0.png)
 
 
 ### Case Study: Troubleshooting Service Availability in Dockerized Wazuh Stack
@@ -44,7 +44,7 @@ Attempting to access the SOC Web Interface resulted in a persistent loading stat
 ###  3. Root Cause (from Logs)
 Executing `sudo docker logs -f single-node_wazuh.dashboard_1` revealed the following critical error:
 > `Error: [ConnectPD]: Connection refused at 172.18.0.2:9200`
-![single-node_wazuh.dashboard_1 logs](./Screenhots/wz6.png)
+![single-node_wazuh.dashboard_1 logs](./Screenhots/wzz.png)
 
 **Root Cause Analysis (RCA):**
 - The Dashboard is trying to communicate with the Indexer on IP `172.18.0.2`.
