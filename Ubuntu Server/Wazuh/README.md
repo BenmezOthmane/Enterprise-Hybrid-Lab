@@ -102,6 +102,13 @@ The Wazuh login interface at `https://10.0.0.20/app/login` is now fully operatio
 - The system is now ready for the **Attack Simulation** phase.
 ![The Wazuh login interface](./Screenhots/wz_pa.png)
 
+### Phase 6: Operational Dashboard & Alert Validation
+The Wazuh Dashboard is now fully operational and receiving security events.
+- **Service Status**: Active and processing telemetry.
+- **Initial Baseline**: Recorded **46 Medium severity** and **146 Low severity** alerts during the first minutes of operation.
+- **Verification**: Confirmed that the Manager and Indexer are successfully synchronized.
+![Wazuh Overview Dashboard](./Screenshots/waz_dash.png)
+
 ###  Conclusion & Lessons Learned
 - **Resource Monitoring**: High container uptime (14h+) is not a valid indicator of service health; monitoring application logs (`docker logs`) is essential.
 - **Dependency Management**: In complex stacks like Wazuh, sequential booting (starting the Indexer before the Dashboard) prevents API handshake failures.
