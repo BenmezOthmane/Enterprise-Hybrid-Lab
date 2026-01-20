@@ -15,7 +15,7 @@ In this stage, I successfully deployed the central monitoring node (SOC Manager)
 
 ###  Verification
 All containers are running correctly as shown in the deployment logs:
-![Wazuh Done Status](./Screenhots/waz0.png)
+![Wazuh Done Status](./Screenhots/wz2.png)
 
 
 ### Case Study: Troubleshooting Service Availability in Dockerized Wazuh Stack
