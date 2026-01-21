@@ -160,15 +160,32 @@ The "Active Directory Users and Computers" console confirms that the logical str
 > **Administrative Structure Preview:**
 > ![Final Administrative Structure](./Screenshots/AD34.png)
 
-##  Phase 7: Perimeter Security & Network Segmentation (pfSense)
+##  Phase 7: Execution: Persistent DNS Resolution 
 
-To transition from a basic lab to a high-fidelity enterprise environment, I implemented a **Three-Tier Network Architecture**. This phase focuses on isolating critical infrastructure from external threats and adversary simulation zones using **pfSense** as the core security gateway.
+After stabilizing the Wazuh Manager, the project moved towards enterprise-level naming conventions by configuring the local DNS environment.
 
-###  Network Design & Segmentation
-Using VMware Global LAN Segments, I enforced strict hardware-level isolation to emulate real-world security zones:
-* **WAN (Internet):** Interfaces with the host machine via NAT to simulate an ISP uplink.
-* **Corporate_Network (LAN):** A private, isolated segment dedicated to the Windows Server (DC-022) and authorized workstations.
-* **Attacker_Zone (OPT1):** A restricted, isolated segment for adversary simulation tools (e.g., Kali Linux), preventing lateral movement to the production environment.
+### 1. DNS Host (A) Record Implementation
+To replace hardcoded IP dependencies (`10.0.0.20`), a persistent hostname was established within the `SOC.local` zone:
+- **Hostname**: `wazuh`
+- **FQDN**: `wazuh.SOC.local`
+- **IP Mapping**: `10.0.0.20`
+- **Record Type**: Static Host (A).
+> ![wazuh.SOC.local](./Screenshots/dn1.png)
+> ![wazuh.SOC.local](./Screenshots/dn2.png)
+
+### 2. Connectivity Validation (Ping Test)
+A verification process was conducted via the Command Prompt to ensure the domain controller and future clients can resolve the SIEM manager's identity:
+- **Command**: `ping wazuh.SOC.local`
+- **Status**: **SUCCESS** ✅
+- **Metrics**: 0% packet loss, <1ms latency.
+- **Result**: The infrastructure is now ready for automated agent deployment via GPO.
+> ![Ping Test](./Screenshots/dn3.png)
+
+---
+**Current System Status:**
+- **AD DS / DNS**: 🟢 Healthy
+- **SIEM Manager Connectivity**: 🟢 Reachable via FQDN
+
 
 
 
