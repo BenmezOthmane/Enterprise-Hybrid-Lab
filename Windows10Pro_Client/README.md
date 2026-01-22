@@ -1,4 +1,4 @@
-###Configuring the static network parameters on the Windows Client
+### Configuring the static network parameters on the Windows Client
 
 Before that, you need to verifying that:
 * **Network Binding**: Attached to **LAN Segment: Corporate**.
@@ -12,7 +12,7 @@ Then, you should follow these steps, to configuring the static network parameter
 > ![VM Network settings](./Screenshots/cl4.png)
 > ![VM Network settings](./Screenshots/cl5.png)
 
-###Client-to-Server Connectivity Validation
+### Client-to-Server Connectivity Validation
 
 After configuring the static network parameters on the Windows Client, a verification phase was initiated to ensure seamless communication within the **Corporate Network** LAN segment.
 > ![VM Network settings](./Screenshots/cl6.png)
