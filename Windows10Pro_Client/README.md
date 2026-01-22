@@ -2,20 +2,26 @@
 
 Before that, you need to verifying that:
 * **Network Binding**: Attached to **LAN Segment: Corporate**.
+> ![VM Network settings](./Screenshots/cl0.png)
 
-Then, you should follow these steps:
+Then, you should follow these steps, to configuring the static network parameters on the Windows Client:
 
+> ![VM Network settings](./Screenshots/cl1.png)
+> ![VM Network settings](./Screenshots/cl2.png)
+> ![VM Network settings](./Screenshots/cl3.png)
+> ![VM Network settings](./Screenshots/cl4.png)
+> ![VM Network settings](./Screenshots/cl5.png)
 
 ###Client-to-Server Connectivity Validation
 
 After configuring the static network parameters on the Windows Client, a verification phase was initiated to ensure seamless communication within the **Corporate Network** LAN segment.
-
+> ![VM Network settings](./Screenshots/cl6.png)
 
 ### 1. Network Configuration Audit
 The client workstation was successfully provisioned with a dedicated static IP to ensure persistent identity:
 - **Hostname**: `Client`
 - **IPv4 Address**: `10.0.0.30`
-- **Subnet Mask**: `255.0.0.0` (Synchronized with DC-022)
+- **Subnet Mask**: `255.0.0.0` (Synchronized with AD Machine)
 - **Default Gateway**: `10.0.0.1`
 
 ### 2. Connectivity Benchmarking (Ping Test)
