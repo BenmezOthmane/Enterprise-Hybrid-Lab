@@ -34,3 +34,29 @@ To verify the Layer 3 reachability between the Client and the Domain Controller 
 The zero-latency connection confirms that the **LAN Segment** is correctly isolated and operational. This establish the fundamental "pipe" required for:
 1. Joining the `SOC.local` Active Directory Domain.
 2. Routing security telemetry to the Wazuh Manager at `10.0.0.20`.
+
+
+##  Phase 2: Active Directory Domain Integration
+
+The integration phase has been successfully completed, marking a critical milestone in the SOC environment setup.
+
+You should firstly to:
+> ![Rename](./Screenshots/cl7.png)
+> ![Rename2](./Screenshots/cl8.png)
+
+### 1. Verification of Domain Join
+- **Confirmation Message**: Received the "Welcome to the SOC.local domain" notification.
+- **Authentication Method**: Validated using the verified `SOC\Administrator` credential format.
+- **Status**: The workstation `Client` has transitioned from a standalone Workgroup to a managed asset within the `SOC.local` forest.
+
+> ![Login credentials](./Screenshots/CL9.png)
+> ![Successfully integration](./Screenshots/cl10.png)
+
+### 2. Post-Join System State
+- **Reboot Required**: The system initiated a mandatory restart to apply domain security policies and initialize the computer account object.
+- **Network Identity**: The machine is now resolvable as `Client.SOC.local` within the corporate DNS infrastructure.
+
+### 3. Impact on SOC Operations
+With the domain join finalized, the lab is now ready for:
+* **Centralized Policy Enforcement**: Pushing security configurations via GPOs.
+* **Unified Telemetry**: Preparing for the Wazuh Agent deployment to monitor domain-authenticated activities.
