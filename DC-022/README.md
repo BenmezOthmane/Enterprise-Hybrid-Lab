@@ -201,3 +201,13 @@ The following advanced policies were enabled for both **Success** and **Failure*
 ### 2. Operational Impact
 - **Visibility**: The `Client` machine is now emitting critical event data (e.g., Event IDs 4688, 4624, 4720).
 - **SIEM Readiness**: These configurations are specifically designed to feed the **Wazuh** engine with the necessary metadata to trigger security alerts.
+
+
+###  System Architecture & Data Flow
+The lab environment operates on a hierarchical telemetry pipeline:
+1. **Policy Layer (GPO)**: DC-022 dictates *what* to log (Process creation, Logons).
+2. **Generation Layer (Endpoint)**: The Client executes tasks and generates Event IDs (4688, 4624) based on those policies.
+3. **Transport Layer (Agent)**: The Wazuh Agent monitors the local Event Viewer and ships data to the Manager.
+4. **Analysis Layer (Manager)**: Wazuh Manager processes events against the rule engine to trigger alerts.
+
+
