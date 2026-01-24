@@ -186,6 +186,18 @@ A verification process was conducted via the Command Prompt to ensure the domain
 - **AD DS / DNS**: 🟢 Healthy
 - **SIEM Manager Connectivity**: 🟢 Reachable via FQDN
 
+##  Phase 8: Comprehensive Security Telemetry via GPO
 
+A robust auditing baseline has been successfully established on **DC-022**, transforming the `Client` logs into high-fidelity security telemetry.
 
+### 1. Multi-Layered Audit Configuration
+The following advanced policies were enabled for both **Success** and **Failure** events to ensure full visibility:
 
+* **Execution Monitoring**: `Audit Process Creation` allows for real-time tracking of all executable activity.
+* **Access Control**: `Audit Logon` ensures every session initiation is logged, facilitating the detection of unauthorized access.
+* **Defense Integrity**: `Audit Authentication Policy Change` monitors for attempts to weaken security configurations.
+* **Identity Governance**: `Audit User Account Management` tracks modifications to user profiles and group memberships.
+
+### 2. Operational Impact
+- **Visibility**: The `Client` machine is now emitting critical event data (e.g., Event IDs 4688, 4624, 4720).
+- **SIEM Readiness**: These configurations are specifically designed to feed the **Wazuh** engine with the necessary metadata to trigger security alerts.
