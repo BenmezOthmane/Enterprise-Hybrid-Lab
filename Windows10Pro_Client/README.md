@@ -77,6 +77,18 @@ The **Wazuh Agent** was successfully moved from the centralized repository to th
 ![MV](./Screenshots/cl144.png)
 
 3. **Command-Line Deployment**: Executed a silent installation using `msiexec` on the **Client**, explicitly pointing to the **Wazuh Manager** at `10.0.0.20`.
-![CMD](./Screenshots/cl16.png)
+## Correcting Command Syntax and Execution Path
 
-4. **Service Initialization**: Confirmed the `Wazuh` service status as running, enabling real-time telemetry shipping to the SOC dashboard.
+The installation failure was traced to a command concatenation error in the CLI environment.
+![CMD](./Screenshots/cl171.png)
+
+###  Technical Root Cause:
+- **Redundant Strings**: The `msiexec.exe` command was inadvertently doubled within a single execution string, causing the installer to trigger the help dialogue instead of the installation process.
+- **Directory Verification**: The working directory was correctly changed to `C:\Users\Client\Desktop` to ensure the `.msi` package was accessible to the installer.
+
+###  Resolution:
+- Re-executed the installation command using a single, cleaned syntax string.
+- Manually verified service registration via `NET START WazuhSvc` following the command execution.
+![CMD](./Screenshots/cl172.png)
+
+5. **Service Initialization**: Confirmed the `Wazuh` service status as running, enabling real-time telemetry shipping to the SOC dashboard.
