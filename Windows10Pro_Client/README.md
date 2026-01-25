@@ -77,6 +77,6 @@ The **Wazuh Agent** was successfully moved from the centralized repository to th
 ![MV](./Screenshots/cl144.png)
 
 3. **Command-Line Deployment**: Executed a silent installation using `msiexec` on the **Client**, explicitly pointing to the **Wazuh Manager** at `10.0.0.20`.
-![CMD](./Screenshots/cl15.png)
+![CMD](./Screenshots/cl16.png)
 
 4. **Service Initialization**: Confirmed the `Wazuh` service status as running, enabling real-time telemetry shipping to the SOC dashboard.
