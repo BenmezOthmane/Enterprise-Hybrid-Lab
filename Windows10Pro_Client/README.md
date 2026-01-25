@@ -60,3 +60,23 @@ You should firstly to:
 With the domain join finalized, the lab is now ready for:
 * **Centralized Policy Enforcement**: Pushing security configurations via GPOs.
 * **Unified Telemetry**: Preparing for the Wazuh Agent deployment to monitor domain-authenticated activities.
+
+##  Phase 3: Asset Transfer and Agent Installation
+
+The **Wazuh Agent** was successfully moved from the centralized repository to the target endpoint for active monitoring.
+
+###  Execution Steps:
+![Step1](./Screenshots/cl12.png)
+![Step2](./Screenshots/cl13.png)
+![Step3](./Screenshots/cl14.png)
+![Step4](./Screenshots/cl141.png)
+
+1. **Network Transfer**: Utilized an SMB share on **DC-022** (`\\10.0.0.10\WazuhDeploy`) to deliver the installer to the domain-joined client.
+![Network_Transfer](./Screenshots/cl142.png)
+![Fl](./Screenshots/cl143.png)
+![MV](./Screenshots/cl144.png)
+
+3. **Command-Line Deployment**: Executed a silent installation using `msiexec` on the **Client**, explicitly pointing to the **Wazuh Manager** at `10.0.0.20`.
+![CMD](./Screenshots/cl15.png)
+
+4. **Service Initialization**: Confirmed the `Wazuh` service status as running, enabling real-time telemetry shipping to the SOC dashboard.
