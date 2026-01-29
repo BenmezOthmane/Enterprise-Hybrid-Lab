@@ -112,3 +112,18 @@ The Wazuh Dashboard is now fully operational and receiving security events.
 ###  Conclusion & Lessons Learned
 - **Resource Monitoring**: High container uptime (14h+) is not a valid indicator of service health; monitoring application logs (`docker logs`) is essential.
 - **Dependency Management**: In complex stacks like Wazuh, sequential booting (starting the Indexer before the Dashboard) prevents API handshake failures.
+
+##  Phase 7: Post-Deployment Sync & Heartbeat Verification
+
+While the administrative shell confirms the service is running, the Dashboard reflects a "Zero Agent" state, indicating a propagation delay.
+![Zero Agent](./Screenhots/554545.png)
+###  Technical Diagnosis:
+- **Registration Latency**: The `wazuh.manager` container may take up to 60 seconds to process the initial enrollment request from the `Amine` agent.
+- **L7 Handshake**: The agent must successfully exchange a unique key over Port 1515 before it appears in the `Endpoints Summary`.
+- **UI Cache**: The browser session might require a manual refresh to pull the latest agent table from the Indexer.
+
+###  Immediate Action:
+Perform a manual refresh of the Dashboard page after 60 seconds of service uptime.
+
+
+
