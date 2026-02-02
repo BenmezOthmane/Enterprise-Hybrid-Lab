@@ -125,5 +125,42 @@ While the administrative shell confirms the service is running, the Dashboard re
 ###  Immediate Action:
 Perform a manual refresh of the Dashboard page after 60 seconds of service uptime.
 
+#  Achievement Report: System Resource Management & Wazuh SIEM Optimization
 
+## 1. Problem Statement
+The cybersecurity lab environment experienced a total service outage due to critical storage depletion:
+* **Service Disruption**: The Wazuh Dashboard became inaccessible, throwing an `Empty reply from server` error.
+* **Host Storage Exhaustion**: The primary system drive (C: SSD) dropped to only **11.9 GB** of free space.
+* **VM Bloat**: Virtual Machines were consuming a total of **93.6 GB**, significantly impacting the host operating system's stability.
 
+## 2. Diagnostics Phase
+Advanced analytical tools were deployed to identify the primary "space consumers":
+* **`ncdu` Utility**: Revealed that the `/var/lib/docker` directory inside the Ubuntu VM was consuming **16.1 GiB**, primarily due to unmanaged indexing and log volumes.
+* **WizTree Analysis**: Discovered that the Ubuntu physical disk file occupied **44.8 GB** on the SSD, which significantly exceeded its actual internal data usage.
+* **`htop` Monitoring**: Confirmed that RAM usage was stable at **2.17 GB** out of 7.71 GB, confirming the bottleneck was strictly storage-related.
+
+## 3. Implementation Strategy (The Solution)
+A multi-tier strategic plan was executed to restore system balance and reclaim premium SSD space:
+
+### A. Internal Environment Cleanup (Ubuntu)
+* Purged corrupted Wazuh indices and unnecessary Swap files, successfully recovering **28 GB** of internal free space.
+* Executed the **Compact** utility within VMware settings to shrink the physical `.vmdk` file from **36.8 GB** to match its actual data footprint.
+
+### B. Physical Infrastructure Migration
+* Migrated "heavy" systems—Windows 10 (27.5 GB) and Windows Server (18.2 GB)—from the saturated SSD (C:) to the high-capacity HDD (D:).
+* Utilized **Cut/Paste** operations instead of standard Copying to avoid "insufficient space" errors during the transfer process.
+
+### C. Permissions & Access Resolution
+* Resolved the `Insufficient permission` error in the new path by granting **Full Control** permissions to the `Everyone` group on the migrated VM folders.
+* Bypassed "Lock File" (`.lck`) conflicts by launching VMware Workstation with **Administrative Privileges**.
+
+## 4. Final Results (Key Achievements)
+| Metric | Pre-Optimization | Post-Optimization |
+| :--- | :--- | :--- |
+| **C: Drive (SSD) Free Space** | **11.9 GB** (Critical) | **~57 GB** (Healthy) |
+| **Wazuh Dashboard Status** | Unresponsive (Down) | Fully Operational (Active) |
+| **Data Distribution** | Congested on a single SSD | Balanced between SSD and HDD |
+
+## 5. Preventive Recommendations
+1. **Log Rotation**: Docker logging has been capped at **100 MB** (`max-size: "100m"`) to prevent future storage spikes.
+2. **Tiered Storage Policy**: Maintain the Wazuh Indexer on the SSD for high I/O performance, while keeping "Victim" agents (Windows VMs) on the HDD to conserve premium host space.
