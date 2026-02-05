@@ -125,6 +125,8 @@ While the administrative shell confirms the service is running, the Dashboard re
 ###  Immediate Action:
 Perform a manual refresh of the Dashboard page after 60 seconds of service uptime.
 
+
+
 #  Achievement Report: System Resource Management & Wazuh SIEM Optimization
 
 ## 1. Problem Statement
@@ -209,3 +211,5 @@ This report documents the successful restoration, securing, and deployment of a 
 * **Indexer/Dashboard**: ✅ **Healthy**
 * **Windows Agent (Amin)**: ✅ **Active (ID: 001)**
 * **Network Path (Port 1514)**: ✅ **Established (TcpTestSucceeded: True)**
+
+![Wazuh](./Screenhots/waf.png)
