@@ -164,3 +164,23 @@ A multi-tier strategic plan was executed to restore system balance and reclaim p
 ## 5. Preventive Recommendations
 1. **Log Rotation**: Docker logging has been capped at **100 MB** (`max-size: "100m"`) to prevent future storage spikes.
 2. **Tiered Storage Policy**: Maintain the Wazuh Indexer on the SSD for high I/O performance, while keeping "Victim" agents (Windows VMs) on the HDD to conserve premium host space.
+
+
+#  Project Achievement Report: Wazuh SIEM Deployment & Infrastructure Recovery
+## 1. Executive Summary
+This report documents the successful restoration, securing, and deployment of a full-stack **SOC Lab** environment. The project involved overcoming critical infrastructure failures, resolving configuration conflicts, and aligning the system with industry-standard security protocols.
+
+---
+
+## 2. Project Milestone Summary
+
+| Phase | Challenge Encountered | Final Outcome |
+| :--- | :--- | :--- |
+| **Storage Management** | Critical failure due to 0% space on **Drive C**, leading to laboratory downtime. | ✅ Successful migration of VM data to **Drive D**, permission granting, and system recovery. |
+| **System Architecture** | **YAML** syntax errors and **Docker** container conflicts preventing service startup. | ✅ Repaired configuration code, pruned Docker environment, and achieved full stack operational status. |
+| **Security & API Integration** | API connection failure (`Error 5007`) due to the system rejecting insecure passwords. | ✅ Hardened system security with complex credentials and established seamless API-to-Dashboard communication. |
+| **Agent Deployment** | Installation failures and persistent `Never Connected` status on the Windows endpoint. | ✅ Executed a clean PowerShell deployment and achieved **Active** status for the Windows agent. |
+
+---
+
+
