@@ -197,4 +197,10 @@ This report documents the successful restoration, securing, and deployment of a 
 * **Problem**: Wazuh internal security policy blocked the API user because the password did not meet the required complexity (`Error 5007`).
 * **Solution**: Implemented environment variables with high-entropy passwords (Uppercase, Lowercase, Numbers, and Symbols) to satisfy the security engine.
 
+### 3.4 Windows Endpoint Synchronization
+* **Problem**: Conflicting MSI installations and naming mismatches prevented the agent from "handshaking" with the manager.
+* **Solution**: Purged stale identities from the manager database and performed a fresh deployment using `WazuhSvc` as the primary service handler.
 
+
+
+---
