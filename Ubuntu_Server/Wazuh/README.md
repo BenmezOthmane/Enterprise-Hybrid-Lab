@@ -183,4 +183,18 @@ This report documents the successful restoration, securing, and deployment of a 
 
 ---
 
+## 3. Detailed Technical Troubleshooting
+
+### 3.1 Storage & Virtualization
+* **Problem**: VMware Workstation could not initiate machines because the host SSD was saturated.
+* **Solution**: Migrated large `.vmdk` files to high-capacity storage and applied **Full Control** permissions to the `Everyone` group to ensure service continuity.
+
+### 3.2 Docker & Configuration Management
+* **Problem**: The `docker-compose.yml` file contained invalid characters and indentation errors that stalled the SIEM manager.
+* **Solution**: Re-aligned the YAML structure and utilized `docker-compose up -d` to orchestrate the Manager, Indexer, and Dashboard services.
+
+### 3.3 API Authentication Hardening
+* **Problem**: Wazuh internal security policy blocked the API user because the password did not meet the required complexity (`Error 5007`).
+* **Solution**: Implemented environment variables with high-entropy passwords (Uppercase, Lowercase, Numbers, and Symbols) to satisfy the security engine.
+
 
