@@ -199,7 +199,8 @@ The following advanced policies were enabled for both **Success** and **Failure*
 > ![Audit Logon](./Screenshots/gp6.png)
 * **Defense Integrity**: `Audit Authentication Policy Change` monitors for attempts to weaken security configurations.
 > ![Audit Authentication Policy Change](./Screenshots/gp7.png)
-
+* **Identity Governance**: `Audit User Account Management` tracks modifications to user profiles and group memberships.
+> ![Audit Authentication Policy Change](./Screenshots/gp8.png)
 
 ### 2. Operational Impact
 - **Visibility**: The `Client` machine is now emitting critical event data (e.g., Event IDs 4688, 4624, 4720).
