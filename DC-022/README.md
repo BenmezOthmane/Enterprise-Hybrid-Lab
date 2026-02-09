@@ -203,7 +203,9 @@ The following advanced policies were enabled for both **Success** and **Failure*
 > ![Audit Authentication Policy Change](./Screenshots/gp8.png)
 
 ### 2. Operational Impact
-- **Visibility**: The `Client` machine is now emitting critical event data (e.g., Event IDs 4688, 4624, 4720).
+- **Visibility**: The `Client` machine is now emitting critical event data.
+> ![Audit Authentication Policy Change](./Screenshots/gp9.png)
+
 - **SIEM Readiness**: These configurations are specifically designed to feed the **Wazuh** engine with the necessary metadata to trigger security alerts.
 
 
