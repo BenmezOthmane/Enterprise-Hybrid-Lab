@@ -198,7 +198,7 @@ The following advanced policies were enabled for both **Success** and **Failure*
 * **Access Control**: `Audit Logon` ensures every session initiation is logged, facilitating the detection of unauthorized access.
 > ![Audit Logon](./Screenshots/gp6.png)
 * **Defense Integrity**: `Audit Authentication Policy Change` monitors for attempts to weaken security configurations.
-> ![Audit Authentication Policy Change](./Screenshots/gp6.png)
+> ![Audit Authentication Policy Change](./Screenshots/gp7.png)
 
 
 ### 2. Operational Impact
