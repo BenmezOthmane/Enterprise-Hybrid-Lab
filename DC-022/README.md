@@ -194,9 +194,12 @@ A robust auditing baseline has been successfully established on **DC-022**, tran
 The following advanced policies were enabled for both **Success** and **Failure** events to ensure full visibility:
 
 * **Execution Monitoring**: `Audit Process Creation` allows for real-time tracking of all executable activity.
+> ![Audit Process Creation](./Screenshots/gp51.png)
 * **Access Control**: `Audit Logon` ensures every session initiation is logged, facilitating the detection of unauthorized access.
+> ![Audit Logon](./Screenshots/gp6.png)
 * **Defense Integrity**: `Audit Authentication Policy Change` monitors for attempts to weaken security configurations.
-* **Identity Governance**: `Audit User Account Management` tracks modifications to user profiles and group memberships.
+> ![Audit Authentication Policy Change](./Screenshots/gp6.png)
+
 
 ### 2. Operational Impact
 - **Visibility**: The `Client` machine is now emitting critical event data (e.g., Event IDs 4688, 4624, 4720).
@@ -206,8 +209,8 @@ The following advanced policies were enabled for both **Success** and **Failure*
 ###  System Architecture & Data Flow
 The lab environment operates on a hierarchical telemetry pipeline:
 1. **Policy Layer (GPO)**: DC-022 dictates *what* to log (Process creation, Logons).
-2. **Generation Layer (Endpoint)**: The Client executes tasks and generates Event IDs (4688, 4624) based on those policies.
-3. **Transport Layer (Agent)**: The Wazuh Agent monitors the local Event Viewer and ships data to the Manager.
-4. **Analysis Layer (Manager)**: Wazuh Manager processes events against the rule engine to trigger alerts.
+3. **Generation Layer (Endpoint)**: The Client executes tasks and generates Event IDs (4688, 4624) based on those policies.
+4. **Transport Layer (Agent)**: The Wazuh Agent monitors the local Event Viewer and ships data to the Manager.
+5. **Analysis Layer (Manager)**: Wazuh Manager processes events against the rule engine to trigger alerts.
 
 
